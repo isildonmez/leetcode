@@ -9,11 +9,10 @@ def longest_palindrome(s)
     end
   end
   palindromes = []
-  hash.each do |letter, index_array|
 
+  hash.each do |letter, index_array|
     if index_array.size > 1
       combinations = index_array.combination(2).to_a
-
       combinations.each do |idx_pairs|
         current_substring = s[idx_pairs[0]..idx_pairs[1]]
         substring = current_substring[1..-2]
@@ -25,13 +24,16 @@ def longest_palindrome(s)
           palindromes << current_substring
         end
       end
-
     end
-
   end
-  palindromes.group_by(&:size).max.last
-  # palindromes.max_by(&:length)
+
+  if palindromes.empty?
+    return s[0]
+  else
+    return palindromes.max_by(&:length)
+  end
 end
 
 puts longest_palindrome("bababad")
 puts longest_palindrome("cbbd")
+puts longest_palindrome("cbad")
