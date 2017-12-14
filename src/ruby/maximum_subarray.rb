@@ -18,3 +18,18 @@ end
 
 puts max_sub_array([-2,1,-3,4,-1,2])
 puts max_sub_array([-2,1,-3,4,-1,-1,2,1,-4,-2,6])
+
+def max_sub_array2(nums)
+  max = 0
+  sum = 0
+  for idx in 0...nums.length
+    sum += nums[idx]
+    sum = 0 if sum < 0
+    max = sum if sum > max
+  end
+  max
+end
+
+puts max_sub_array2([-2,1,-3,4,-1,2])
+puts max_sub_array2([-2,1,-3,4,-1,-1,2,1,-4,-2,6])
+
