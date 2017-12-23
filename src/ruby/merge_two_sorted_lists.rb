@@ -1,13 +1,33 @@
 class ListNode
   attr_accessor :val, :next
-  def initialize(val = nil)
+  def initialize(val)
       @val = val
       @next = nil
   end
 end
 
 def merge_two_lists(l1, l2)
-  current_value_l1 = l1
-  current_value_l1 = 
-  result = ListNode.new
+  return l2 if l1.nil?
+  return l1 if l2.nil?
+  return nil if l1.nil? && l2.nil?
+  current1 = l1
+  current2 = l2
+  result = ListNode.new(nil)
+  head = result
+  until current1.nil? || current2.nil?
+    unless head.val.nil?
+      head.next = ListNode.new(nil)
+      head = head.next
+    end
+    min_val = [current1.val, current2.val].min
+    head.val = min_val
+    current1.val < current2.val ? current1 = current1.next : current2 = current2.next
+  end
+  list = current1.nil? ? current2 : current1
+  until list.nil?
+    head.next = ListNode.new(list.val)
+    list = list.next
+    head = head.next
+  end
+  result
 end
