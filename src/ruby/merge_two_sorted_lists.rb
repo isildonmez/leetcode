@@ -31,3 +31,22 @@ def merge_two_lists(l1, l2)
   end
   result
 end
+
+def merge_two_lists2(l1, l2)
+  headNode = ListNode.new(nil)
+  tail = headNode
+  while (l1 && l2)
+    if (l1.val < l2.val)
+      tail.next = l1
+      l1 = l1.next
+    else
+      tail.next = l2
+      l2 = l2.next
+    end
+    tail = tail.next
+  end
+
+  tail.next = l1 ? l1 : l2
+    headNode = headNode.next
+  return headNode
+end
