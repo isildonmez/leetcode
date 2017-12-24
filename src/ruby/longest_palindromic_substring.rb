@@ -1,4 +1,3 @@
-# Todo: Fix "abcda" split into 2 while loops.
 def longest_palindrome_2(s)
   palindrome = true
   word = ""
@@ -8,26 +7,28 @@ def longest_palindrome_2(s)
     pos = 0
     pos_limit = [(idx+1), (s.length-idx)].min
     while (pos <= pos_limit)
-      break if (s[idx-pos].nil? && s[idx+1+pos].nil? && !palindrome)
+      break if (s[idx-pos].nil? && s[idx+1+pos].nil?)
       if s[(idx)-pos] == s[idx+1+pos]
         substring = s[(idx-pos)..(idx+1+pos)]
         if substring.length > max
           word = substring
           max = substring.length
         end
-        palindrome = true
       else
-        palindrome = false
+        break
       end
+      pos += 1
+    end
+    while (pos <= pos_limit)
+      break if (s[idx-pos].nil? && s[idx+pos].nil?)
       if s[idx-pos] == s[idx+pos]
         substring = s[(idx-pos)..(idx+pos)]
         if substring.length > max
           word = substring
           max = substring.length
         end
-        palindrome = true
       else
-        palindrome = false
+        break
       end
       pos += 1
     end
