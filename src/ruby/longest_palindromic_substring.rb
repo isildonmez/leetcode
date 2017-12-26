@@ -4,34 +4,25 @@ def longest_palindrome_2(s)
   max = 0
   return s if s.split("").uniq.length <= 1
   for idx in 0...s.length
-    even_palindrome = false
-    odd_palindrome = false
+    pos = 0
     pos_limit = [(idx+1), (s.length-idx)].min
-    for pos in 0..pos_limit
-      if s[idx-pos] == s[idx+1+pos]
-        substring = s[(idx-pos)..(idx+1+pos)]
-        if substring.length > max
-          word = substring
-          max = substring.length
-        end
-        even_palindrome = true
-      else
-        even_palindrome = false
+    while (s[idx-pos] == s[idx+1+pos]) && (pos <= pos_limit)
+      substring = s[(idx-pos)..(idx+1+pos)]
+      if substring.length > max
+        word = substring
+        max = substring.length
       end
-      # puts "idx: #{idx}, pos: #{pos}"
-      # puts "s[idx-pos]: #{s[idx-pos]}"
-      # puts "s[idx+pos]: #{s[idx+pos]}"
-      if s[idx-pos] == s[idx+pos]
-        substring = s[(idx-pos)..(idx+pos)]
-        if substring.length > max
-          word = substring
-          max = substring.length
-        end
-        odd_palindrome = true
-      else
-        odd_palindrome = false
+      pos += 1
+    end
+    pos = 0
+    while (s[idx-pos] == s[idx+pos]) && (pos <= pos_limit)
+      substring = s[(idx-pos)..(idx+pos)]
+      if substring.length > max
+        word = substring
+        max = substring.length
+        p word
       end
-      break unless (even_palindrome && odd_palindrome)
+      pos += 1
     end
   end
   word
@@ -39,15 +30,15 @@ end
 
 
 
-# p longest_palindrome_2("a") == "a"
-# p longest_palindrome_2("ab") == "a"
+p longest_palindrome_2("a") == "a"
+p longest_palindrome_2("ab") == "a"
 p longest_palindrome_2("aba") == "aba"
-# p longest_palindrome_2("abcda") == "a"
-# p longest_palindrome_2("yyvvy") == "yvvy"
+p longest_palindrome_2("abcda") == "a"
+p longest_palindrome_2("yyvvy") == "yvvy"
 puts longest_palindrome_2("bababad") == ("babab" || "ababa")
-# puts longest_palindrome_2("cbbd") == "bb"
-# puts longest_palindrome_2("cbad") == "c"
-puts longest_palindrome_2("sooos") == "sooos"
+puts longest_palindrome_2("cbbd") == "bb"
+puts longest_palindrome_2("cbad") == "c"
+puts longest_palindrome_2("azwdzwmwcqzgcobeeiphemqbjtxzwkhiqpbrprocbppbxrnsxnwgikiaqutwpftbiinlnpyqstkiqzbggcsdzzjbrkfmhgtnbujzszxsycmvipjtktpebaafycngqasbbhxaeawwmkjcziybxowkaibqnndcjbsoehtamhspnidjylyisiaewmypfyiqtwlmejkpzlieolfdjnxntonnzfgcqlcfpoxcwqctalwrgwhvqvtrpwemxhirpgizjffqgntsmvzldpjfijdncexbwtxnmbnoykxshkqbounzrewkpqjxocvaufnhunsmsazgibxedtopnccriwcfzeomsrrangufkjfzipkmwfbmkarnyyrgdsooosgqlkzvorrrsaveuoxjeajvbdpgxlcrtqomliphnlehgrzgwujogxteyulphhuhwyoyvcxqatfkboahfqhjgujcaapoyqtsdqfwnijlkknuralezqmcryvkankszmzpgqutojoyzsnyfwsyeqqzrlhzbc") == "sooos"
 
 
 
@@ -87,6 +78,6 @@ def longest_palindrome(s)
   end
 end
 
-# puts longest_palindrome("bababad")
-# puts longest_palindrome("cbbd")
-# puts longest_palindrome("cbad")
+puts longest_palindrome("bababad")
+puts longest_palindrome("cbbd")
+puts longest_palindrome("cbad")
