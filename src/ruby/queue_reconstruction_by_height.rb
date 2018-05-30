@@ -18,18 +18,10 @@ def reconstruct_queue(people)
 
   while highest_el
     k_array = people_hash[highest_el]
-    if queue.empty?
-      k_array.each do |idx|
-        queue << [highest_el, idx]
-      end
-    else
-      k_array.each do |idx|
-        queue.insert(idx, [highest_el, idx])
-      end
+    k_array.each do |idx|
+      queue.insert(idx, [highest_el, idx])
     end
     highest_el = heights_inc.pop
   end
   queue
 end
-
-p reconstruct_queue([[9,0],[7,0],[1,9],[3,0],[2,7],[5,3],[6,0],[3,4],[6,2],[5,2]])
