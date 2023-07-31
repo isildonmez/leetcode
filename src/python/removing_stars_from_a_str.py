@@ -2,7 +2,7 @@
 
 class Solution:
     def remove_stars(self, s: str) -> str:
-        reversed = ""
+        reversed = []
         contiguous_stars = 0
         for idx in range(1, len(s)+1):
             if s[-idx] == "*":
@@ -10,8 +10,8 @@ class Solution:
             elif contiguous_stars > 0:
                 contiguous_stars -= 1
             else:
-                reversed += s[-idx]
-        return reversed[::-1]
+                reversed.append(s[-idx])
+        return "".join(reversed[::-1])
 
     def refactored_remove_stars(self, s: str) -> str:
         stack = []
