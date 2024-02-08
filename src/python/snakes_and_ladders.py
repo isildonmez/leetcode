@@ -1,3 +1,5 @@
+# From https://leetcode.com/problems/snakes-and-ladders/description/?envType=study-plan-v2&envId=top-interview-150
+
 def square_to_index(square: int, n: int) -> tuple[int, int]:
     steps = n ** 2 - square
     i = steps // n
@@ -39,6 +41,32 @@ class Solution:
         if n ** 2 < 7:
             return 1
         return check_min_num_of_move(board, 0, {1}, {1})
+    
+    def snakes_and_ladders_solution(self, board: list[list[int]]) -> int:
+        oneDBoard = [num for index, row in enumerate(reversed(board)) for num in row[::(1 if index % 2 == 0 else -1)]]
+
+        boardLength = len(oneDBoard)
+        queue = [(0, 1)]
+        visited = [False] * boardLength
+
+        dieSides = 6
+        while queue:
+            square, moves = queue.pop(0)
+            for steps in range(1, dieSides + 1):
+                moveTo = square + steps
+                if oneDBoard[moveTo] != -1:
+                    moveTo = oneDBoard[moveTo] - 1
+
+                if moveTo == boardLength - 1:
+                    return moves
+
+                if not visited[moveTo]:
+                    queue.append((moveTo, moves + 1))
+
+                visited[moveTo] = True
+
+        return -1
+
 
 if __name__ == "__main__":
     s = Solution()
