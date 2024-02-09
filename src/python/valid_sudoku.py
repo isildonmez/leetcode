@@ -1,15 +1,12 @@
 # From https://leetcode.com/problems/valid-sudoku/description/?envType=study-plan-v2&envId=top-interview-150
 
 def valid_subpart(line: list[int]) -> bool:
-    numerics = list(filter(lambda x: x.isnumeric(), line))
-    numbers = list(map(lambda x: int(x), numerics))
+    numbers = [int(c) for c in line if c.isnumeric()]
     # Check if numbers are unique
     if len(numbers) != len(set(numbers)):
         return False
     # Check if numbers are in [1,9]
-    if not set(numbers).issubset(set(range(1,10))):
-        return False
-    return True
+    return all(0 < i < 10 for i in numbers)
 
 def square_idx(r: int, c: int) -> int:
     return (r // 3) * 3 + (c // 3)
@@ -26,10 +23,7 @@ class Solution:
                 sub_squares[square_idx(r, c)].append(board[r][c])
             if not valid_subpart(row) or not valid_subpart(column):
                 return False
-        for s in sub_squares:
-            if not valid_subpart(s):
-                return False
-        return True
+        return all(valid_subpart(s) for s in sub_squares)
 
 
 if __name__ == "__main__":
