@@ -1,3 +1,5 @@
+# TODO: Check for better solutions in leetcode
+
 class Node:
     def __init__(self, val):
         self.val = val
