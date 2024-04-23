@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "src"
+version = "0.1.0"
+description = ""
+authors = ["Isil Donmez Satici <isil.donmez@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.1"
+flake8 = "^7.0.0"
+black = "^24.2.0"
+flake8-black = "^0.3.6"
+flake8-import-order = "^0.18.2"
+zimports = "^0.6.1"
+flake8-bugbear = "^24.2.6"
+flake8-bandit = "^4.1.1"
+mypy = "^1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
