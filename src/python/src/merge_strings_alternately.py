@@ -13,7 +13,7 @@ class Solution(object):
         result += word1[min_length:] + word2[min_length:]
 
         return result
-    
+
     def refactored_merge_alternately(self, word1, word2):
         """
         :type word1: str
@@ -27,6 +27,7 @@ class Solution(object):
             if i < len(word2):
                 result += word2[i]
         return result
+
 
 if __name__ == "__main__":
     print("Testing...")

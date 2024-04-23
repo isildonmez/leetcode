@@ -15,7 +15,7 @@ class RecentCounter:
                 self.requests = self.requests[idx:]
                 break
         return len(self.requests)
-    
+
 
 class AlternativeRecentCounter:
 

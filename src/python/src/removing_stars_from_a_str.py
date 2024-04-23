@@ -1,10 +1,11 @@
 # from: https://leetcode.com/problems/removing-stars-from-a-string/?envType=study-plan-v2&envId=leetcode-75
 
+
 class Solution:
     def remove_stars(self, s: str) -> str:
         reversed = []
         contiguous_stars = 0
-        for idx in range(1, len(s)+1):
+        for idx in range(1, len(s) + 1):
             if s[-idx] == "*":
                 contiguous_stars += 1
             elif contiguous_stars > 0:
@@ -22,8 +23,9 @@ class Solution:
                 stack.pop()
             else:
                 continue
-        return ''.join(stack)
-    
+        return "".join(stack)
+
+
 if __name__ == "__main__":
     print("Testing...")
     s = Solution()
@@ -32,4 +34,3 @@ if __name__ == "__main__":
     assert s.refactored_remove_stars("leet**cod*e") == "lecoe"
     assert s.refactored_remove_stars("erase*****") == ""
     print("All passed")
-

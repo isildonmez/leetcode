@@ -1,29 +1,35 @@
-from collections import deque
-
 class TreeNode:
     def __init__(self, x):
         self.val = x
         self.left = None
         self.right = None
 
+
 class Solution:
-    def find_path(self, target: 'TreeNode', root: 'TreeNode', level: int, existing_path: set[tuple['TreeNode', int]]) -> None:
+    def find_path(
+        self,
+        target: "TreeNode",
+        root: "TreeNode",
+        level: int,
+        existing_path: set[tuple["TreeNode", int]],
+    ) -> None:
         if root == target:
             existing_path.add((root, level))
             return
         if root.right is not None:
-            self.find_path(target, root.right, level-1, existing_path)
+            self.find_path(target, root.right, level - 1, existing_path)
             if len(existing_path) > 0:
                 existing_path.add((root, level))
                 return
         if root.left is not None:
-            self.find_path(target, root.left, level-1, existing_path)
+            self.find_path(target, root.left, level - 1, existing_path)
             if len(existing_path) > 0:
                 existing_path.add((root, level))
                 return
 
-
-    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+    def lowestCommonAncestor(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
         q_path = set()
         self.find_path(q, root, 0, q_path)
         p_path = set()
@@ -35,8 +41,9 @@ class Solution:
                 lowest_level, lowest_node = level, node
         return lowest_node
 
-
-    def lowestCommonAncestorSolution(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+    def lowestCommonAncestorSolution(
+        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
+    ) -> "TreeNode":
         if not root or root in {p, q}:
             return root
 
@@ -45,10 +52,10 @@ class Solution:
 
         if left and right:
             return root
-        elif left: return left
-        
-        return right
+        elif left:
+            return left
 
+        return right
 
 
 if __name__ == "__main__":
@@ -73,7 +80,3 @@ if __name__ == "__main__":
     print("Testing...")
     assert s.lowestCommonAncestor(r, p, q) == r
     print("Done!")
-
-
-
-

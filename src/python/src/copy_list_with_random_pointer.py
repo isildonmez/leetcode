@@ -1,15 +1,16 @@
 from typing import Optional
 
+
 class Node:
-    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+    def __init__(self, x: int, next: "Node" = None, random: "Node" = None):
         self.val = int(x)
         self.next = next
         self.random = random
 
 
 class Solution:
-    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        idx_by_node = {} #node -> idx
+    def copyRandomList(self, head: "Optional[Node]") -> "Optional[Node]":
+        idx_by_node = {}  # node -> idx
         nodes = []
         idx = 0
         root = head
@@ -50,15 +51,15 @@ if __name__ == "__main__":
     n3.random = n2
     n1.random = n0
     output = s.copyRandomList(n0)
-    assert output.val == 7 #n0
+    assert output.val == 7  # n0
     assert output.random == None
-    assert output.next.val == 13 #n1
+    assert output.next.val == 13  # n1
     assert output.next.random.val == 7
-    assert output.next.next.val == 11 #n2
+    assert output.next.next.val == 11  # n2
     assert output.next.next.random.val == 1
-    assert output.next.next.next.val == 10 #n3
+    assert output.next.next.next.val == 10  # n3
     assert output.next.next.next.random.val == 11
-    assert output.next.next.next.next.val == 1 #n4
+    assert output.next.next.next.next.val == 1  # n4
     assert output.next.next.next.next.random.val == 7
     n_1 = Node(1)
     n_2 = Node(2)
@@ -72,5 +73,3 @@ if __name__ == "__main__":
     assert output.next.next == None
     assert output.random.random.val == 2
     print("Done!")
-
-        

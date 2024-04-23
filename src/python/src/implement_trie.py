@@ -1,9 +1,11 @@
 # https://leetcode.com/problems/implement-trie-prefix-tree/description/?envType=study-plan-v2&envId=top-interview-150
 
+
 class Node:
     def __init__(self, char: str):
         self.char = char
         self.nodes = {}
+
 
 class Trie:
     def __init__(self):
@@ -37,11 +39,13 @@ class Trie:
                 return False
             current_nodes = current_nodes[char].nodes
         return True
-    
+
+
 class TrieNode:
     def __init__(self) -> None:
         self.children = {}
         self.is_end = False
+
 
 class AlternativeTrie:
     def __init__(self):
@@ -54,7 +58,7 @@ class AlternativeTrie:
                 current.children[char] = TrieNode()
             current = current.children[char]
         current.is_end = True
-    
+
     def search(self, word: str) -> bool:
         current = self.root
         for char in word:
@@ -62,7 +66,7 @@ class AlternativeTrie:
                 return False
             current = current.children[char]
         return current.is_end
-    
+
     def startsWith(self, prefix: str) -> bool:
         current = self.root
         for char in prefix:
@@ -70,6 +74,7 @@ class AlternativeTrie:
                 return False
             current = current.children[char]
         return True
+
 
 if __name__ == "__main__":
     t = Trie()

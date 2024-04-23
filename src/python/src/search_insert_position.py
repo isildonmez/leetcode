@@ -22,7 +22,6 @@ class Solution:
             return end_idx
         if target > nums[end_idx]:
             return end_idx + 1
-        
 
     def searchInsertRefactored(self, nums: list[int], target: int) -> int:
         if len(nums) == 0:
@@ -44,7 +43,7 @@ class Solution:
             return start_idx
         else:
             return start_idx + 1
-        
+
     def searchInsertImproved(self, nums: list[int], target: int) -> int:
         left = 0
         right = len(nums)
@@ -58,12 +57,11 @@ class Solution:
                 left = mid
             else:
                 return mid
-            
-        if nums[left] >= target:      
+
+        if nums[left] >= target:
             return left
         else:
             return right
-
 
     def searchInsertBest(self, nums: list[int], target: int) -> int:
         left = 0
@@ -76,27 +74,22 @@ class Solution:
                 right = mid
             else:
                 left = mid
-            
-        if nums[left] >= target:      
+
+        if nums[left] >= target:
             return left
         else:
             return right
-        
-
-
-
-
 
 
 if __name__ == "__main__":
     s = Solution()
     print("Testing...")
-    assert s.searchInsert([1,3,5,6], 5) == 2
-    assert s.searchInsert([1,3,5,6], 2) == 1
-    assert s.searchInsert([1,3,5,6], 7) == 4
+    assert s.searchInsert([1, 3, 5, 6], 5) == 2
+    assert s.searchInsert([1, 3, 5, 6], 2) == 1
+    assert s.searchInsert([1, 3, 5, 6], 7) == 4
     assert s.searchInsertRefactored([1], 1) == 0
-    assert s.searchInsertRefactored([1,3,5,6], 5) == 2
-    assert s.searchInsertRefactored([1,3,5,6], 2) == 1
-    assert s.searchInsertRefactored([1,3,5,6], 7) == 4
+    assert s.searchInsertRefactored([1, 3, 5, 6], 5) == 2
+    assert s.searchInsertRefactored([1, 3, 5, 6], 2) == 1
+    assert s.searchInsertRefactored([1, 3, 5, 6], 7) == 4
     assert s.searchInsertRefactored([1], 1) == 0
     print("Done!")

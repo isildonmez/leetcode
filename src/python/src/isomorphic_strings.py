@@ -1,5 +1,5 @@
 # From https://leetcode.com/problems/isomorphic-strings/description/?envType=study-plan-v2&envId=top-interview-150
-import collections
+
 
 class Solution:
     def isIsomorphic(self, s: str, t: str) -> bool:
@@ -21,14 +21,13 @@ class Solution:
         if len(s_char_map) != len(set(s_char_map.values())):
             return False
         return True
-    
+
     def isIsomorphicSolution(self, s: str, t: str) -> bool:
-        zipped = set(zip(s,t))
+        zipped = set(zip(s, t))
         if len(zipped) == len(set(s)) == len(set(t)):
             return True
         else:
             return False
-        
 
 
 if __name__ == "__main__":

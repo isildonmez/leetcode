@@ -1,5 +1,6 @@
 #  from https://leetcode.com/problems/move-zeroes/?envType=study-plan-v2&envId=leetcode-75
 
+
 class Solution(object):
     def move_zeroes(self, nums):
         """
@@ -15,7 +16,6 @@ class Solution(object):
                 break
         nums += [0] * number_of_zeroes
         return nums
-
 
     def refactored_move_zeroes(self, nums):
         """
@@ -36,6 +36,6 @@ class Solution(object):
 if __name__ == "__main__":
     print("Testing...")
     s = Solution()
-    assert s.move_zeroes([0,1,0,3,12]) == [1,3,12,0,0]
+    assert s.move_zeroes([0, 1, 0, 3, 12]) == [1, 3, 12, 0, 0]
     assert s.move_zeroes([0]) == [0]
     print("All passed")

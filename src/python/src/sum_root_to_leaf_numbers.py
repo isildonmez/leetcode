@@ -1,5 +1,5 @@
 from typing import Optional
-from collections import deque
+
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -7,15 +7,17 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
-    def sum_of_branch(self, root: TreeNode, current_sum: int, leaves: list[int]) -> None:
+    def sum_of_branch(
+        self, root: TreeNode, current_sum: int, leaves: list[int]
+    ) -> None:
         if root.left is not None:
             self.sum_of_branch(root.left, current_sum * 10 + root.val, leaves)
         if root.right is not None:
             self.sum_of_branch(root.right, current_sum * 10 + root.val, leaves)
         if root.left is None and root.right is None:
             leaves.append(current_sum * 10 + root.val)
-
 
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         if root is None:

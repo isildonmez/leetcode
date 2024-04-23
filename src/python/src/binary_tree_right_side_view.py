@@ -2,13 +2,17 @@
 
 from typing import Optional
 
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None) -> None:
         self.val = val
         self.left = left
         self.right = right
 
-def traverse_with_level(r: TreeNode, idx: int = 0, nodes_by_level: list[int] | None = None) -> list[list[int]]:
+
+def traverse_with_level(
+    r: TreeNode, idx: int = 0, nodes_by_level: list[int] | None = None
+) -> list[list[int]]:
     if nodes_by_level is None:
         nodes_by_level = list()
     if r is not None:
@@ -20,7 +24,6 @@ def traverse_with_level(r: TreeNode, idx: int = 0, nodes_by_level: list[int] | N
         traverse_with_level(r.left, idx, nodes_by_level)
         traverse_with_level(r.right, idx, nodes_by_level)
         return nodes_by_level
-    
 
 
 class Solution:
@@ -34,7 +37,6 @@ class Solution:
         return right_view
 
 
-
 if __name__ == "__main__":
     a = TreeNode(1, TreeNode(2, None, TreeNode(5)), TreeNode(3, None, TreeNode(4)))
     b = TreeNode(1, None, TreeNode(2, TreeNode(3), None))
@@ -43,12 +45,12 @@ if __name__ == "__main__":
     s = Solution()
     print("Testing...")
     assert traverse_with_level(d) == [[1], [2]]
-    assert traverse_with_level(c) == [[1], [2,3], [5, 4]]
+    assert traverse_with_level(c) == [[1], [2, 3], [5, 4]]
     assert traverse_with_level(b) == [[1], [2], [3]]
-    assert traverse_with_level(a) == [[1], [2,3], [5, 4]]
-    assert s.right_side_view(a) == [1,3,4]
-    assert s.right_side_view(b) == [1,2,3]
-    assert s.right_side_view(c) == [1,3,4]
-    assert s.right_side_view(d) == [1,2]
+    assert traverse_with_level(a) == [[1], [2, 3], [5, 4]]
+    assert s.right_side_view(a) == [1, 3, 4]
+    assert s.right_side_view(b) == [1, 2, 3]
+    assert s.right_side_view(c) == [1, 3, 4]
+    assert s.right_side_view(d) == [1, 2]
     assert s.right_side_view(None) == []
     print("Done!")

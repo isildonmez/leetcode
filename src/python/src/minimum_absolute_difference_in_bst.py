@@ -1,5 +1,5 @@
 from typing import Optional
-import re
+
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None) -> None:
@@ -14,7 +14,7 @@ def traverse_for_values(root: TreeNode, values: list[int]) -> list[int]:
         traverse_for_values(root.left, values)
         traverse_for_values(root.right, values)
         return values
-        
+
 
 class Solution:
     def minimum_absolute_difference(self, root: Optional[TreeNode]) -> int:
@@ -29,7 +29,6 @@ class Solution:
                 min_difference = abs(vals[idx] - vals[idx + 1])
             idx += 1
         return min_difference
-
 
 
 if __name__ == "__main__":

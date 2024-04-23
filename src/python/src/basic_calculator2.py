@@ -1,5 +1,6 @@
 from collections import deque
 
+
 class Solution:
     def calculate(self, s: str) -> int:
         s = s.replace(" ", "")
@@ -9,7 +10,7 @@ class Solution:
         for i, c in enumerate(s):
             if c.isdigit():
                 current_number = current_number * 10 + int(c)
-            if not c.isdigit() or i == len(s)-1:
+            if not c.isdigit() or i == len(s) - 1:
                 if operator == "*":
                     stack.append(stack.pop() * current_number)
                 elif operator == "/":

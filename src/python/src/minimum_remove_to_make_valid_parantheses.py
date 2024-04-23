@@ -2,6 +2,7 @@
 
 from collections import deque
 
+
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         left = deque()
@@ -20,7 +21,6 @@ class Solution:
             if i not in to_remove:
                 result.append(c)
         return "".join(result)
-
 
 
 if __name__ == "__main__":

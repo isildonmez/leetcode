@@ -1,5 +1,6 @@
 # TODO: Check for better solutions in leetcode
 
+
 class Node:
     def __init__(self, val):
         self.val = val
@@ -7,8 +8,9 @@ class Node:
         self.right = None
         self.parent = None
 
+
 class Solution:
-    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+    def lowestCommonAncestor(self, p: "Node", q: "Node") -> "Node":
         p_ancestors, q_ancestors = {p}, {q}
         p_ancestor, q_ancestor = p, q
         while p_ancestor is not None or q_ancestor is not None:
@@ -37,6 +39,4 @@ if __name__ == "__main__":
     assert s.lowestCommonAncestor(n4, n3) == 1
     print("Done!")
 
-
-
-        # Find the parent: compare parents sets.
+    # Find the parent: compare parents sets.

@@ -2,10 +2,12 @@
 
 from typing import Optional
 
+
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution:
     def has_cycle(self, head: Optional[ListNode]) -> bool:
@@ -19,16 +21,15 @@ class Solution:
                 nodes.add(head.next)
             head = head.next
         return False
-    
+
     def has_cycle_solution(self, head: Optional[ListNode]) -> bool:
         if head is None:
             return False
-        slow,fast = head, head
+        slow, fast = head, head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
-            
-            if slow == fast:
-                return True 
-        return False
 
+            if slow == fast:
+                return True
+        return False

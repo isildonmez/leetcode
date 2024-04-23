@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/maximum-sum-circular-subarray/submissions/1183588995/?envType=study-plan-v2&envId=top-interview-150
 
+
 class Solution:
     def maxSubarraySumCircular(self, nums: list[int]) -> int:
         linear_max = current_max = nums[0]
@@ -26,7 +27,7 @@ class Solution:
             circular_max = max(current_max, circular_max)
 
         return max(linear_max, circular_max)
-    
+
     def maxSubarraySumCircular(self, nums: list[int]) -> int:
         linear_max = current_max = nums[0]
         linear_min = current_min = total_sum = nums[0]
@@ -38,12 +39,12 @@ class Solution:
             linear_min = min(linear_min, current_min)
         sub_sum = total_sum - linear_min
         return linear_max if linear_max < 0 else max(linear_max, sub_sum)
-    
+
 
 if __name__ == "__main__":
     s = Solution()
     print("Testing...")
-    assert s.maxSubarraySumCircular([1,-2,3,-2]) == 3
-    assert s.maxSubarraySumCircular([5,-3,5]) == 10
-    assert s.maxSubarraySumCircular([-3,-2,-3]) == -2
+    assert s.maxSubarraySumCircular([1, -2, 3, -2]) == 3
+    assert s.maxSubarraySumCircular([5, -3, 5]) == 10
+    assert s.maxSubarraySumCircular([-3, -2, -3]) == -2
     print("Done!")

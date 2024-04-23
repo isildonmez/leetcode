@@ -20,15 +20,17 @@ class Solution:
             "6": {"m", "n", "o"},
             "7": {"p", "q", "r", "s"},
             "8": {"t", "u", "v"},
-            "9": {"w", "x", "y", "z"}
+            "9": {"w", "x", "y", "z"},
         }
         if len(digits) == 0:
             return []
         combinations = digits_to_letters[digits[0]]
-        for i in range(1,len(digits)):
-            combinations = self._combined_letters(combinations, digits_to_letters[digits[i]])
+        for i in range(1, len(digits)):
+            combinations = self._combined_letters(
+                combinations, digits_to_letters[digits[i]]
+            )
         return list(combinations)
-    
+
     def alternative_letter_combinations(self, digits: str) -> list[str]:
         digits_to_letters = {
             "2": "abc",
@@ -47,12 +49,12 @@ class Solution:
         return ["".join(c) for c in combinations]
 
 
-
-
 if __name__ == "__main__":
     s = Solution()
     print("Testing...")
-    assert set(s.alternative_letter_combinations("23")) == set(["ad","ae","af","bd","be","bf","cd","ce","cf"])
+    assert set(s.alternative_letter_combinations("23")) == set(
+        ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+    )
     assert s.alternative_letter_combinations("") == []
     assert set(s.alternative_letter_combinations("2")) == set(["a", "b", "c"])
     print("Done!")

@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 class Solution:
     def maximumSwap(self, num: int) -> int:
         nums = str(num)
@@ -12,7 +13,13 @@ class Solution:
             highest_idx = max(idx_by_digits[highest_digit])
             for i in range(highest_idx):
                 if int(nums[i]) < highest_digit:
-                    return int(nums[:i] + str(highest_digit)+ nums[i+1:highest_idx] + nums[i] + nums[highest_idx+1:])
+                    return int(
+                        nums[:i]
+                        + str(highest_digit)
+                        + nums[i + 1 : highest_idx]
+                        + nums[i]
+                        + nums[highest_idx + 1 :]
+                    )
             digits -= {highest_digit}
         return num
 

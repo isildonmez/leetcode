@@ -3,11 +3,13 @@
 from collections import deque
 from typing import Optional
 
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
@@ -24,10 +26,10 @@ class Solution:
             cursor.next = ListNode(vals.pop())
             cursor = cursor.next
         return reversed
-    
+
     def alternativeReverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if head is None:
-            return None 
+            return None
         reversed = ListNode(head.val)
         rest = head.next
         while rest is not None:
@@ -37,8 +39,9 @@ class Solution:
             reversed = cursor
         return reversed
 
-
-    def otherAlternativeReverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def otherAlternativeReverseList(
+        self, head: Optional[ListNode]
+    ) -> Optional[ListNode]:
         reversed = None
         while head is not None:
             temp = head.next
