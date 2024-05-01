@@ -8,7 +8,7 @@ class TreeNode:
         self.right = right
 
 
-def traverse(r: TreeNode) -> list[int]:
+def traverse(r: TreeNode) -> str:
     if r is not None:
         return f"{r.val}, {traverse(r.left)}, {traverse(r.right)}"
 

@@ -13,12 +13,8 @@ class Solution:
                 current_sum += nums[r]
                 r += 1
             while current_sum >= target:
-                if shortest_len is None:
+                if shortest_len is None or shortest_len > r - l:
                     shortest_len = r - l
-                elif shortest_len > r - l:
-                    shortest_len = r - l
-                else:
-                    pass
                 current_sum -= nums[l]
                 l += 1
 

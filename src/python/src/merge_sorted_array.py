@@ -6,7 +6,7 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        for i in reversed(range(len(nums1) - m)):
+        for i in range(len(nums1) - m):
             nums1.pop()
         nums1.extend(nums2)
         nums1.sort()

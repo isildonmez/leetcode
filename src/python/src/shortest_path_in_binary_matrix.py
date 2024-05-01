@@ -31,21 +31,17 @@ class Solution:
 
 if __name__ == "__main__":
     s = Solution()
+    m = [
+        [0, 1, 0, 0, 0, 0],
+        [0, 1, 1, 1, 1, 1],
+        [0, 0, 0, 0, 1, 1],
+        [0, 1, 0, 0, 0, 1],
+        [1, 0, 0, 1, 0, 1],
+        [0, 0, 1, 0, 1, 0],
+    ]
     print("Testing...")
     assert s.shortestPathBinaryMatrix([[0, 1], [1, 0]]) == 2
     assert s.shortestPathBinaryMatrix([[0, 0, 0], [1, 1, 0], [1, 1, 0]]) == 4
     assert s.shortestPathBinaryMatrix([[1, 0, 0], [1, 1, 0], [1, 1, 0]]) == -1
-    assert (
-        s.shortestPathBinaryMatrix(
-            [
-                [0, 1, 0, 0, 0, 0],
-                [0, 1, 1, 1, 1, 1],
-                [0, 0, 0, 0, 1, 1],
-                [0, 1, 0, 0, 0, 1],
-                [1, 0, 0, 1, 0, 1],
-                [0, 0, 1, 0, 1, 0],
-            ]
-        )
-        == 7
-    )
+    assert s.shortestPathBinaryMatrix(m) == 7
     print("Done!")
