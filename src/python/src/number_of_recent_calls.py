@@ -4,7 +4,6 @@ from collections import deque
 
 
 class RecentCounter:
-
     def __init__(self):
         self.requests = []
 
@@ -18,7 +17,6 @@ class RecentCounter:
 
 
 class AlternativeRecentCounter:
-
     def __init__(self):
         self.requests = deque()
 
