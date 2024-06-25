@@ -12,7 +12,8 @@ from collections import Counter, defaultdict
 def check_permutation(s: str) -> bool:
     letter_counts = defaultdict(int)
     for char in s:
-        if char != " ":
+        # Assuming to compare only letters.
+        if char.isalpha():
             letter_counts[char] += 1
     odd = False
     for c in letter_counts.values():
