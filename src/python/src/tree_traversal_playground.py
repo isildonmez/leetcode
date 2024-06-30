@@ -60,11 +60,11 @@ if __name__ == "__main__":
     t = Traverse()
     #         1
     #     2      3
-    #    4  5
-    tree = TreeNode(1, TreeNode(2, TreeNode(4), TreeNode(5)), TreeNode(3))
+    #    4  5   6
+    tree = TreeNode(1, TreeNode(2, TreeNode(4), TreeNode(5)), TreeNode(3, TreeNode(6)))
     print("Testing...")
-    assert t.dfs_preorder(tree) == [1, 2, 4, 5, 3]
-    assert t.dfs_inorder(tree) == [4, 2, 5, 1, 3]
-    assert t.dfs_postorder(tree) == [4, 5, 2, 3, 1]
-    assert t.bfs(tree) == [1, 2, 3, 4, 5]
+    assert t.dfs_preorder(tree) == [1, 2, 4, 5, 3, 6]
+    assert t.dfs_inorder(tree) == [4, 2, 5, 1, 6, 3]
+    assert t.dfs_postorder(tree) == [4, 5, 2, 6, 3, 1]
+    assert t.bfs(tree) == [1, 2, 3, 4, 5, 6]
     print("Done!")
