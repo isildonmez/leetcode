@@ -25,7 +25,7 @@ if __name__ == "__main__":
     n1.next = n2
     n2.next = n3
     n3.next = n1
-    route_between_nodes(n1) == True
-    n3.next = None
-    route_between_nodes(n1) == False
+    assert route_between_nodes(n1) == True
+    n4 = Node(Node(Node()))
+    assert route_between_nodes(n4) == False
     print("Done!")
