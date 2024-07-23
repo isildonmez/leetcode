@@ -5,7 +5,6 @@ class Solution:
     def add_binary(self, a: str, b: str) -> str:
         total = int(a, 2) + int(b, 2)
         result = ""
-        power = 0
         while total >= 2:
             total, current_digit = total // 2, total % 2
             result = f"{current_digit}" + result
