@@ -1,20 +1,7 @@
-class Solution:
-    # On
-    def findPeakElement(self, nums: list[int]) -> int:
-        if len(nums) == 1:
-            return 0
-        for i, n in enumerate(nums):
-            if i == 0:
-                if n > nums[i + 1]:
-                    return i
-            elif i == len(nums) - 1:
-                if n > nums[i - 1]:
-                    return i
-            else:
-                if nums[i - 1] < n > nums[i + 1]:
-                    return i
+# https://leetcode.com/problems/find-peak-element/description/?envType=study-plan-v2&envId=top-interview-150
 
-    # Ologn
+
+class Solution:
     def findPeakElement(self, nums: list[int]) -> int:
         l, r = 0, len(nums) - 1
         while l < r:
