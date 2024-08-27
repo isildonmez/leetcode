@@ -15,21 +15,19 @@ class Solution:
     def averageOfLevels(self, root: Optional[TreeNode]) -> list[float]:
         if root is None:
             return []
-        nodes = deque()
-        nodes.append(root)
         result = []
+        nodes = deque([root])
         while len(nodes) > 0:
-            level_sum = 0
-            num_of_nodes = 0
-            for _ in range(len(nodes)):
+            count = len(nodes)
+            total = 0
+            for _ in range(count):
                 n = nodes.popleft()
-                level_sum += n.val
-                num_of_nodes += 1
+                total += n.val
                 if n.left is not None:
                     nodes.append(n.left)
                 if n.right is not None:
                     nodes.append(n.right)
-            result.append(float(level_sum / num_of_nodes))
+            result.append(total / count)
         return result
 
 
