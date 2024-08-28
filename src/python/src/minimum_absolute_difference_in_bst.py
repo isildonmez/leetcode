@@ -1,3 +1,6 @@
+# https://leetcode.com/problems/minimum-absolute-difference-in-bst/?envType=study-plan-v2&envId=top-interview-150
+
+
 from typing import Optional
 
 
@@ -8,27 +11,20 @@ class TreeNode:
         self.right = right
 
 
-def traverse_for_values(root: TreeNode, values: list[int]) -> list[int]:
-    if root is not None and root.val is not None:
-        values.append(root.val)
-        traverse_for_values(root.left, values)
-        traverse_for_values(root.right, values)
-        return values
-
-
 class Solution:
-    def minimum_absolute_difference(self, root: Optional[TreeNode]) -> int:
-        if root is None:
-            return 0
-        vals = traverse_for_values(root, [])
-        vals.sort()
-        idx = 0
-        min_difference = abs(vals[1] - vals[0])
-        while idx < len(vals) - 1:
-            if abs(vals[idx] - vals[idx + 1]) < min_difference:
-                min_difference = abs(vals[idx] - vals[idx + 1])
-            idx += 1
-        return min_difference
+    def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+        vals = self.dfs(root)
+        difference = abs(vals[0] - vals[1])
+        for i in range(2, len(vals)):
+            difference = min(difference, abs(vals[i] - vals[i - 1]))
+        return difference
+
+    def dfs(self, root: Optional[TreeNode]) -> list[int]:
+        return (
+            self.dfs(root.left) + [root.val] + self.dfs(root.right)
+            if root is not None
+            else []
+        )
 
 
 if __name__ == "__main__":
@@ -36,6 +32,6 @@ if __name__ == "__main__":
     b = TreeNode(1, TreeNode(0, None, None), TreeNode(48, TreeNode(12), TreeNode(49)))
     print("Testing...")
     s = Solution()
-    assert (s.minimum_absolute_difference(a)) == 1
-    assert (s.minimum_absolute_difference(b)) == 1
+    assert (s.getMinimumDifference(a)) == 1
+    assert (s.getMinimumDifference(b)) == 1
     print("Done!")
