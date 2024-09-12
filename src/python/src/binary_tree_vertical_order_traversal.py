@@ -1,4 +1,6 @@
-# TODO: Check for better solutions in leetcode
+# https://leetcode.com/problems/binary-tree-vertical-order-traversal/?envType=company&envId=facebook&favoriteSlug=facebook-thirty-days
+
+from collections import defaultdict
 from collections import deque
 from typing import Optional
 
@@ -13,45 +15,27 @@ class TreeNode:
 
 
 class Solution:
-    def find_axis(
-        self, root: TreeNode, axis: int, values: dict[int, list[int]]
-    ) -> dict[int, list[int]]:
-        queue: deque[tuple[TreeNode, int]] = deque()
-        queue.append((root, axis))
-        while len(queue) > 0:
-            node, axis = queue.popleft()
-            if axis in values:
-                values[axis].append(node.val)
-            else:
-                values[axis] = [node.val]
-            if node.left:
-                queue.append((node.left, axis - 1))
-            if node.right:
-                queue.append((node.right, axis + 1))
-        return values
-
-    def find_axis_dfs(
-        self, root: TreeNode, axis: int, values: dict[int, list[int]]
-    ) -> dict[int, list[int]]:
-        if axis in values:
-            values[axis].append(root.val)
-        else:
-            values[axis] = [root.val]
-        if root.left:
-            self.find_axis(root.left, axis - 1, values)
-        if root.right:
-            self.find_axis(root.right, axis + 1, values)
-        return values
-
     def verticalOrder(self, root: Optional[TreeNode]) -> list[list[int]]:
-        if not root:
+        if root is None:
             return []
-        values_by_left_axis = self.find_axis(root, 0, {})
-        axes = values_by_left_axis.keys()
-        times, normalised = len(axes), abs(min(axes))
-        result = [None] * times
-        for a, v in values_by_left_axis.items():
-            result[a + normalised] = v
+
+        nodes_by_axis = defaultdict(list)
+        nodes = deque()
+        nodes.append((root, 0))
+        min_idx = max_idx = 0
+
+        while len(nodes) > 0:
+            n, axis = nodes.popleft()
+            nodes_by_axis[axis].append(n.val)
+            min_idx = min(min_idx, axis)
+            max_idx = max(max_idx, axis)
+            if n.left is not None:
+                nodes.append((n.left, axis - 1))
+            if n.right is not None:
+                nodes.append((n.right, axis + 1))
+        result = []
+        for axis in range(min_idx, max_idx + 1):
+            result.append(nodes_by_axis[axis])
         return result
 
 
