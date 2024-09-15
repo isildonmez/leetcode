@@ -1,4 +1,4 @@
-# TODO: Check for better solutions in leetcode
+# https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree-iii/?envType=company&envId=facebook&favoriteSlug=facebook-thirty-days
 
 
 class Node:
@@ -11,19 +11,20 @@ class Node:
 
 class Solution:
     def lowestCommonAncestor(self, p: "Node", q: "Node") -> "Node":
-        p_ancestors, q_ancestors = {p}, {q}
-        p_ancestor, q_ancestor = p, q
-        while p_ancestor is not None or q_ancestor is not None:
-            if p_ancestor is not None:
-                if p_ancestor in q_ancestors:
-                    return p_ancestor
-                p_ancestors.add(p_ancestor)
-                p_ancestor = p_ancestor.parent
-            if q_ancestor is not None:
-                if q_ancestor in p_ancestors:
-                    return q_ancestor
-                q_ancestors.add(q_ancestor)
-                q_ancestor = q_ancestor.parent
+        if p is q:
+            return p
+        visited_nodes = set([p, q])
+        while p.parent is not None or q.parent is not None:
+            if p.parent is not None:
+                if p.parent in visited_nodes:
+                    return p.parent
+                visited_nodes.add(p.parent)
+                p = p.parent
+            if q.parent is not None:
+                if q.parent in visited_nodes:
+                    return q.parent
+                visited_nodes.add(q.parent)
+                q = q.parent
 
 
 if __name__ == "__main__":
