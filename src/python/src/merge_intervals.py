@@ -7,15 +7,13 @@ class Solution:
             return intervals
         intervals.sort(key=lambda x: x[0])
         result = []
-        i = 0
-        s0, e0 = intervals[i]
-        while i < len(intervals) - 1:
-            s1, e1 = intervals[i + 1]
-            if e0 >= s1:
-                e0 = max(e0, e1)
+        start, end = intervals[0]
+        for idx in range(1, len(intervals)):
+            c_start, c_end = intervals[idx]
+            if end >= c_start:
+                end = max(end, c_end)
             else:
-                result.append([s0, e0])
-                s0, e0 = s1, e1
-            i += 1
-        result.append([s0, e0])
+                result.append([start, end])
+                start, end = c_start, c_end
+        result.append([start, end])
         return result
