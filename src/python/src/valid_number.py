@@ -3,48 +3,26 @@ from collections import Counter
 
 class Solution:
     def isNumber(self, s: str) -> bool:
-        if not self.any_digit(s):
-            return False
-        if self.is_int(s) or self.is_decimal(s) or self.is_scientific(s):
-            return True
-        return False
+        dot = digit = exponent = False
 
-    def any_digit(self, s: str) -> bool:
-        return any(c in "0123456789" for c in s)
-
-    def is_int(self, s: str) -> bool:
-        if s[0] not in "+-0123456789":
-            return False
-        if any(c not in "0123456789" for c in s[1:]):
-            return False
-        return True
-
-    def is_decimal(self, s: str) -> bool:
-        if s[0] not in "+-.0123456789":
-            return False
-        if any(c not in ".0123456789" for c in s[1:]):
-            return False
-        chars = Counter(s)
-        if chars["."] > 1:
-            return False
-        return True
-
-    def is_scientific(self, s: str) -> bool:
-        e_idx = None
-        for i, c in enumerate(s):
-            if c.lower() not in "+-.0123456789e":
-                return False
-            if c.lower() == "e":
-                if e_idx is not None:
+        for i,c in enumerate(s):
+            if c.isdigit():
+                digit = True
+            elif c in ('+', '-'):
+                if not (i==0 or s[i-1] in ('e','E')):
                     return False
-                e_idx = i
-        if e_idx is None:
-            return False
-        if not self.any_digit(s[:e_idx]) or not self.is_decimal(s[:e_idx]):
-            return False
-        if not self.any_digit(s[e_idx + 1 :]) or not self.is_int(s[e_idx + 1 :]):
-            return False
-        return True
+            elif c in ('e','E'):
+                if exponent or not digit:
+                    return False
+                exponent = True
+                digit = False
+            elif c=='.':
+                if exponent or dot:
+                    return False
+                dot = True
+            else:
+                return False
+        return digit
 
 
 if __name__ == "__main__":
