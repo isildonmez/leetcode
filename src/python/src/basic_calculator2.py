@@ -1,26 +1,27 @@
+# https://leetcode.com/problems/basic-calculator-ii/description/?envType=company&envId=facebook&favoriteSlug=facebook-thirty-days
+
 from collections import deque
 
 
 class Solution:
     def calculate(self, s: str) -> int:
-        s = s.replace(" ", "")
         stack = deque()
-        current_number = 0
-        operator = None
-        for i, c in enumerate(s):
-            if c.isdigit():
-                current_number = current_number * 10 + int(c)
-            if not c.isdigit() or i == len(s) - 1:
-                if operator == "*":
-                    stack.append(stack.pop() * current_number)
-                elif operator == "/":
-                    stack.append(int(stack.pop() / current_number))
-                elif operator == "-":
-                    stack.append(-current_number)
+        sign = "+"
+        num = 0
+        for c in s + "+":
+            if c.isnumeric():
+                num = num * 10 + int(c)
+            elif c in "+-*/":
+                if sign == "+":
+                    stack.append(num)
+                elif sign == "-":
+                    stack.append(-num)
+                elif sign == "*":
+                    stack.append(stack.pop() * num)
                 else:
-                    stack.append(current_number)
-                current_number = 0
-                operator = c
+                    stack.append(int(stack.pop() / num))
+                sign = c
+                num = 0
         return sum(stack)
 
 
