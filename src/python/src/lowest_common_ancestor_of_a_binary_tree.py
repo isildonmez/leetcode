@@ -6,56 +6,22 @@ class TreeNode:
 
 
 class Solution:
-    def find_path(
-        self,
-        target: "TreeNode",
-        root: "TreeNode",
-        level: int,
-        existing_path: set[tuple["TreeNode", int]],
-    ) -> None:
-        if root == target:
-            existing_path.add((root, level))
-            return
-        if root.right is not None:
-            self.find_path(target, root.right, level - 1, existing_path)
-            if len(existing_path) > 0:
-                existing_path.add((root, level))
-                return
-        if root.left is not None:
-            self.find_path(target, root.left, level - 1, existing_path)
-            if len(existing_path) > 0:
-                existing_path.add((root, level))
-                return
-
     def lowestCommonAncestor(
         self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
     ) -> "TreeNode":
-        q_path = set()
-        self.find_path(q, root, 0, q_path)
-        p_path = set()
-        self.find_path(p, root, 0, p_path)
-        commons = p_path.intersection(q_path)
-        lowest_node, lowest_level = None, None
-        for node, level in commons:
-            if lowest_level == None or lowest_level > level:
-                lowest_level, lowest_node = level, node
-        return lowest_node
+        if root is None:
+            return root
 
-    def lowestCommonAncestorSolution(
-        self, root: "TreeNode", p: "TreeNode", q: "TreeNode"
-    ) -> "TreeNode":
-        if not root or root in {p, q}:
+        if root in {p, q}:
             return root
 
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
 
-        if left and right:
+        if left is not None and right is not None:
             return root
-        elif left:
-            return left
 
-        return right
+        return left if left is not None else right
 
 
 if __name__ == "__main__":
