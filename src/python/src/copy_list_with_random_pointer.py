@@ -10,33 +10,32 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: "Optional[Node]") -> "Optional[Node]":
-        idx_by_node = {}  # node -> idx
-        nodes = []
-        idx = 0
-        root = head
-        while root is not None:
-            idx_by_node[root] = idx
-            nodes.append(root)
-            root = root.next
-            idx += 1
-
-        root = None
+        if head is None:
+            return head
+        original_nodes = []
+        original_nodes_to_idx = {}
+        current = head
+        idx_of_node = 0
+        while current is not None:
+            original_nodes.append(current)
+            original_nodes_to_idx[current] = idx_of_node
+            idx_of_node += 1
+            current = current.next
         new_nodes = []
-        for node in reversed(nodes):
-            root = Node(node.val, root, None)
-            new_nodes.append(root)
-        new_nodes.reverse()
-
-        for idx, node in enumerate(new_nodes):
-            old_random_node = nodes[idx].random
-            if old_random_node is None:
-                continue
-            random_idx = idx_by_node[old_random_node]
-            node.random = new_nodes[random_idx]
-
-        if root is None:
-            return None
-        return root
+        for _ in range(len(original_nodes)):
+            new_nodes.append(Node(0))
+        for i, h in enumerate(original_nodes):
+            current = new_nodes[i]
+            current.val = h.val
+            if i + 1 <= len(original_nodes) - 1:
+                current.next = new_nodes[i + 1]
+            else:
+                current.next = None
+            if h.random is None:
+                current.random = None
+            else:
+                current.random = new_nodes[original_nodes_to_idx[h.random]]
+        return new_nodes[0]
 
 
 if __name__ == "__main__":
