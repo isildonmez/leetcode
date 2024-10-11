@@ -3,15 +3,13 @@ from collections import deque
 
 class Solution:
     def shortestPathBinaryMatrix(self, grid: list[list[int]]) -> int:
-        n = len(grid)
-        if grid[0][0] != 0:
-            return -1
-        if grid[n - 1][n - 1] != 0:
+        if grid[0][0] != 0 or grid[-1][-1] != 0:
             return -1
         heads = deque()
         # (step_count, x, y)
         heads.append((1, 0, 0))
         grid[0][0] = 1
+        n = len(grid)
         while len(heads) != 0:
             step_count, x, y = heads.popleft()
             if x == n - 1 and y == n - 1:

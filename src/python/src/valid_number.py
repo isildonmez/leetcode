@@ -1,22 +1,19 @@
-from collections import Counter
-
-
 class Solution:
     def isNumber(self, s: str) -> bool:
         dot = digit = exponent = False
 
-        for i,c in enumerate(s):
+        for i, c in enumerate(s):
             if c.isdigit():
                 digit = True
-            elif c in ('+', '-'):
-                if not (i==0 or s[i-1] in ('e','E')):
+            elif c in ("+", "-"):
+                if not (i == 0 or s[i - 1] in ("e", "E")):
                     return False
-            elif c in ('e','E'):
+            elif c in ("e", "E"):
                 if exponent or not digit:
                     return False
                 exponent = True
                 digit = False
-            elif c=='.':
+            elif c == ".":
                 if exponent or dot:
                     return False
                 dot = True
