@@ -6,37 +6,15 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        for i in range(len(nums1) - m):
-            nums1.pop()
-        nums1.extend(nums2)
-        nums1.sort()
-        return nums1
-
-    def merge_refactor(
-        self, nums1: list[int], m: int, nums2: list[int], n: int
-    ) -> None:
-        """
-        Do not return anything, modify nums1 in-place instead.
-        """
-        del nums1[m:]
-        if n == 0:
-            return nums1
-        del nums2[n:]
-        if m == 0:
-            nums1.extend(nums2)
-            return nums1
-        i1, i2 = 0, 0
-        while i1 < m and i2 < n:
-            if nums1[i1] < nums2[i2]:
-                nums1.append(nums1[i1])
-                i1 += 1
+        i1, i2, idx = m - 1, n - 1, m + n - 1
+        while i2 >= 0:
+            if i1 >= 0 and nums1[i1] > nums2[i2]:
+                nums1[idx] = nums1[i1]
+                i1 -= 1
             else:
-                nums1.append(nums2[i2])
-                i2 += 1
-        rest = nums1[i1:m] + nums2[i2:]
-        del nums1[:m]
-        nums1.extend(rest)
-        return nums1
+                nums1[idx] = nums2[i2]
+                i2 -= 1
+            idx -= 1
 
 
 if __name__ == "__main__":
