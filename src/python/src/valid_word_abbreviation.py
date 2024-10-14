@@ -5,23 +5,18 @@ class Solution:
     def validWordAbbreviation(self, word: str, abbr: str) -> bool:
         j = 0
         num = 0
-        for i, c in enumerate(abbr):
+        for c in abbr:
             if c.isdigit():
                 if num == 0 and c == "0":
                     return False
                 num = num * 10 + int(c)
-                if i == len(abbr) - 1:
-                    return len(word) - j == num
                 continue
-            if num != 0:
-                j += num
-            num = 0
-            if j >= len(word):
-                return False
-            if c != word[j]:
+            j += num
+            if j >= len(word) or word[j] != c:
                 return False
             j += 1
-        if j != len(word):
+            num = 0
+        if j + num != len(word):
             return False
         return True
 
