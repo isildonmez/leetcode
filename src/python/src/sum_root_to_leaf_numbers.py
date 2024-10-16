@@ -1,3 +1,4 @@
+from collections import deque
 from typing import Optional
 
 
@@ -9,22 +10,20 @@ class TreeNode:
 
 
 class Solution:
-    def sum_of_branch(
-        self, root: TreeNode, current_sum: int, leaves: list[int]
-    ) -> None:
-        if root.left is not None:
-            self.sum_of_branch(root.left, current_sum * 10 + root.val, leaves)
-        if root.right is not None:
-            self.sum_of_branch(root.right, current_sum * 10 + root.val, leaves)
-        if root.left is None and root.right is None:
-            leaves.append(current_sum * 10 + root.val)
-
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         if root is None:
             return 0
-        all_leaves = []
-        self.sum_of_branch(root, 0, all_leaves)
-        return sum(all_leaves)
+        nodes = deque([(root, root.val)])
+        res = 0
+        while len(nodes) > 0:
+            current, num = nodes.pop()
+            if current.left is not None:
+                nodes.append((current.left, num * 10 + current.left.val))
+            if current.right is not None:
+                nodes.append((current.right, num * 10 + current.right.val))
+            if current.right is None and current.left is None:
+                res += num
+        return res
 
 
 if __name__ == "__main__":
