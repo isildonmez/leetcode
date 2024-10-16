@@ -3,15 +3,19 @@ from collections import defaultdict
 
 class Solution:
     def groupStrings(self, strings: list[str]) -> list[list[str]]:
-        patterns = defaultdict(list)
+        pattern_to_strings = defaultdict(list)
+        normaliser = ord("a")
         mod = ord("z") - ord("a") + 1
         for s in strings:
-            baseline = ord(s[0])
             pattern = ""
-            for i in range(1, len(s)):
-                pattern += f"{(ord(s[i]) - baseline) % mod}-"
-            patterns[pattern].append(s)
-        return list(patterns.values())
+            difference = ord(s[0]) - normaliser
+            for c in s:
+                ascii_num = ord(c) - difference
+                if ascii_num < ord("a"):
+                    ascii_num += mod
+                pattern += chr(ascii_num)
+            pattern_to_strings[pattern].append(s)
+        return pattern_to_strings.values()
 
 
 if __name__ == "__main__":
