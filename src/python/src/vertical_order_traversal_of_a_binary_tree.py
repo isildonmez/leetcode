@@ -18,16 +18,18 @@ class Solution:
         if root is None:
             return []
         nodes = deque([(root, 0, 0)])
-        node_vals = []
+        column_to_row_val_pairs = defaultdict(list)
+        far_left = far_right = 0
         while len(nodes) > 0:
             current, col, row = nodes.popleft()
-            node_vals.append((col, row, current.val))
+            column_to_row_val_pairs[col].append((row, current.val))
+            far_left = min(col, far_left)
+            far_right = max(col, far_right)
             if current.left is not None:
                 nodes.append((current.left, col - 1, row + 1))
             if current.right is not None:
                 nodes.append((current.right, col + 1, row + 1))
-        node_vals.sort()
-        vals_by_column = defaultdict(list)
-        for c, _, v in node_vals:
-            vals_by_column[c].append(v)
-        return vals_by_column.values()
+        result = []
+        for c in range(far_left, far_right + 1):
+            result.append([v for r, v in sorted(column_to_row_val_pairs[c])])
+        return result
