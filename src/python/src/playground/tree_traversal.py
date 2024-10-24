@@ -17,26 +17,22 @@ class TreeNode:
 class Traverse:
     # node -> left -> right
     def dfs_preorder(self, root: Optional["TreeNode"]) -> list["TreeNode"]:
-        return (
-            [root.val] + self.dfs_preorder(root.left) + self.dfs_preorder(root.right)
-            if root
-            else []
-        )
+        if root is None:
+            return []
+        return [root.val] + self.dfs_preorder(root.left) + self.dfs_preorder(root.right)
 
     # left -> node -> right
     def dfs_inorder(self, root: Optional["TreeNode"]) -> list["TreeNode"]:
-        return (
-            self.dfs_inorder(root.left) + [root.val] + self.dfs_inorder(root.right)
-            if root
-            else []
-        )
+        if root is None:
+            return []
+        return self.dfs_inorder(root.left) + [root.val] + self.dfs_inorder(root.right)
 
     # left -> right -> node
     def dfs_postorder(self, root: Optional["TreeNode"]) -> list["TreeNode"]:
+        if root is None:
+            return []
         return (
             self.dfs_postorder(root.left) + self.dfs_postorder(root.right) + [root.val]
-            if root
-            else []
         )
 
     # node -> left -> right
