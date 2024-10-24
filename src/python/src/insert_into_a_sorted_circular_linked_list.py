@@ -16,19 +16,13 @@ class Solution:
             head = Node(insertVal)
             head.next = head
             return head
-        new_node = Node(insertVal)
         current = head
-        insert = False
-        while True:
-            if current.next == head:
-                insert = True
-            elif current.val <= insertVal <= current.next.val:
-                insert = True
+        while current.next != head:
+            if current.val <= insertVal <= current.next.val:
+                break
             elif current.val > current.next.val:
-                if current.val <= insertVal or insertVal <= current.next.val:
-                    insert = True
-            if insert is True:
-                new_node.next = current.next
-                current.next = new_node
-                return head
+                if current.val < insertVal or insertVal <= current.next.val:
+                    break
             current = current.next
+        current.next = Node(insertVal, current.next)
+        return head
