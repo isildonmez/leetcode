@@ -16,17 +16,17 @@ class Solution:
         carry = 0
         dummy = ListNode()
         tail = dummy
-        while l1 or l2 or carry:
-            if l1:
+        while l1 is not None or l2 is not None or carry != 0:
+            if l1 is not None:
                 carry += l1.val
                 l1 = l1.next
-            if l2:
+            if l2 is not None:
                 carry += l2.val
                 l2 = l2.next
 
-            tail.next = ListNode(carry % 10)
+            carry, val = divmod(carry, 10)
+            tail.next = ListNode(val)
             tail = tail.next
-            carry = carry // 10
         return dummy.next
 
 
