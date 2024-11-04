@@ -1,4 +1,4 @@
-from typing import Optional
+# https://leetcode.com/problems/diameter-of-binary-tree/description/?envType=company&envId=facebook&favoriteSlug=facebook-all&status=SOLVED
 
 
 class TreeNode:
@@ -9,19 +9,20 @@ class TreeNode:
 
 
 class Solution:
-    def __init__(self):
-        self.res = 0
+    def __init__(self) -> None:
+        self.diameter = 0
 
-    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        self.dfs(root)
-        return self.res
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
+        self.calculate_edges(root)
+        return self.diameter
 
-    def dfs(self, root: Optional[TreeNode]) -> int:
-        if root is None:
+    def calculate_edges(self, current: TreeNode) -> int:
+        if current.left is None and current.right is None:
             return 0
-
-        left = self.dfs(root.left)
-        right = self.dfs(root.right)
-
-        self.res = max(self.res, left + right)
-        return 1 + max(left, right)
+        left = right = 0
+        if current.left is not None:
+            left = self.calculate_edges(current.left) + 1
+        if current.right is not None:
+            right = self.calculate_edges(current.right) + 1
+        self.diameter = max(self.diameter, left + right)
+        return max(left, right)
