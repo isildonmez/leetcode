@@ -20,7 +20,7 @@ def check_permutation(s: str) -> bool:
     for c in letter_counts.values():
         if c % 2 == 0:
             continue
-        if odd == True:
+        if odd is True:
             return False
         odd = True
     return True
@@ -28,7 +28,7 @@ def check_permutation(s: str) -> bool:
 
 if __name__ == "__main__":
     print("Testing...")
-    assert check_permutation("cao ttca") == True
-    assert check_permutation("ca ttca") == True
-    assert check_permutation("cao tca") == False
+    assert check_permutation("cao ttca") is True
+    assert check_permutation("ca ttca") is True
+    assert check_permutation("cao tca") is False
     print("Done!")

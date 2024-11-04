@@ -48,24 +48,24 @@ def missing_element(a: list[int], k: int) -> Optional[int]:
     total_missing = a[-1] - a[0] - (len(a) - 1)
     if k > total_missing:
         return None
-    l = 0
-    r = len(a) - 1
-    while r - l > 1:
-        mid_idx = (l + r) // 2
-        difference = a[mid_idx] - a[l]
-        total_elements = mid_idx - l
+    left = 0
+    right = len(a) - 1
+    while right - left > 1:
+        mid_idx = (left + right) // 2
+        difference = a[mid_idx] - a[left]
+        total_elements = mid_idx - left
         missing_elements = difference - total_elements
         if k <= missing_elements:
-            r = mid_idx
+            right = mid_idx
         else:
-            l = mid_idx
+            left = mid_idx
             k -= missing_elements
-        mid_idx = (r + l) // 2
-    difference = a[r] - a[l]
-    total_elements = r - l
+        mid_idx = (right + left) // 2
+    difference = a[right] - a[left]
+    total_elements = right - left
     missing_elements = difference - total_elements
     if missing_elements >= k:
-        return a[l] + k
+        return a[left] + k
 
 
 if __name__ == "__main__":
@@ -73,9 +73,9 @@ if __name__ == "__main__":
     assert rolling_avg([1, 2, 3, 4, 5], 3) == [2.0, 3.0, 4.0]
     assert missing_element([2, 3, 5, 9, 10, 11, 12], 3) == 7
     assert missing_element([2, 4, 7, 8, 10, 11, 12], 3) == 6
-    assert missing_element([2, 4, 7, 8, 10, 11, 12], 10) == None
+    assert missing_element([2, 4, 7, 8, 10, 11, 12], 10) is None
     assert missing_element([2, 4, 7, 8, 10, 11, 12, 15], 6) == 14
     assert missing_element([2, 5], 2) == 4
-    assert missing_element([2, 5], 3) == None
-    assert missing_element([], 3) == None
+    assert missing_element([2, 5], 3) is None
+    assert missing_element([], 3) is None
     print("Done!")

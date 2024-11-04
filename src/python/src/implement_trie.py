@@ -35,7 +35,7 @@ class Trie:
         if not current_nodes:
             return False
         for char in prefix:
-            if not char in current_nodes.keys():
+            if char not in current_nodes.keys():
                 return False
             current_nodes = current_nodes[char].nodes
         return True
@@ -81,9 +81,9 @@ if __name__ == "__main__":
     t.insert("at")
     t.insert("and")
     print("Testing...")
-    assert t.search("and") == True
-    assert t.search("app") == False
-    assert t.startsWith("an") == True
-    assert t.startsWith("and") == True
-    assert t.startsWith("ad") == False
+    assert t.search("and") is True
+    assert t.search("app") is False
+    assert t.startsWith("an") is True
+    assert t.startsWith("and") is True
+    assert t.startsWith("ad") is False
     print("Done!")

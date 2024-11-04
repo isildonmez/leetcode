@@ -10,18 +10,18 @@ class Solution:
     def binary_search(
         self, nums: list[int], target: int, searching_left_side: bool
     ) -> int:
-        l, r, idx = 0, len(nums) - 1, -1
+        left, right, idx = 0, len(nums) - 1, -1
 
-        while l <= r:
-            mid_idx = (l + r) // 2
+        while left <= right:
+            mid_idx = (left + right) // 2
             if nums[mid_idx] < target:
-                l = mid_idx + 1
+                left = mid_idx + 1
             elif nums[mid_idx] > target:
-                r = mid_idx - 1
+                right = mid_idx - 1
             else:
                 idx = mid_idx
                 if searching_left_side:
-                    r = mid_idx - 1
+                    right = mid_idx - 1
                 else:
-                    l = mid_idx + 1
+                    left = mid_idx + 1
         return idx

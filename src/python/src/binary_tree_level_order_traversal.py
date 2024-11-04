@@ -20,8 +20,8 @@ class Solution:
         queue.append(root)
         while len(queue) > 0:
             ans = []
-            l = len(queue)
-            for _ in range(l):
+            length = len(queue)
+            for _ in range(length):
                 node = queue.pop(0)
                 ans.append(node.val)
                 if node.left is not None:

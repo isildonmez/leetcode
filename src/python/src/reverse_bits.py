@@ -8,6 +8,6 @@ class Solution:
 if __name__ == "__main__":
     print("Testing...")
     s = Solution()
-    s.reverseBits(43261596) == 964176192
-    s.reverseBits(4294967293) == 3221225471
+    assert s.reverseBits(43261596) == 964176192
+    assert s.reverseBits(4294967293) == 3221225471
     print("Done!")

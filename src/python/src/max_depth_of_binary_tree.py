@@ -26,7 +26,10 @@ class Solution:
                     nodes.append(head.right)
         return depth
 
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
+    def maxDepthAlternative(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
-        return max(self.maxDepth(root.right) + 1, self.maxDepth(root.left) + 1)
+        return max(
+            self.maxDepthAlternative(root.right) + 1,
+            self.maxDepthAlternative(root.left) + 1,
+        )

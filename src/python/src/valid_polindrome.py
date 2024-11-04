@@ -20,10 +20,10 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
     print("Testing...")
-    assert s.isPalindrome("A man, a plan, a canal: Panama") == True
-    assert s.isPalindrome("race a car") == False
-    assert s.isPalindrome(" ") == True
-    assert s.isPalindromeSolution("A man, a plan, a canal: Panama") == True
-    assert s.isPalindromeSolution("race a car") == False
-    assert s.isPalindromeSolution(" ") == True
+    assert s.isPalindrome("A man, a plan, a canal: Panama") is True
+    assert s.isPalindrome("race a car") is False
+    assert s.isPalindrome(" ") is True
+    assert s.isPalindromeSolution("A man, a plan, a canal: Panama") is True
+    assert s.isPalindromeSolution("race a car") is False
+    assert s.isPalindromeSolution(" ") is True
     print("Done!")

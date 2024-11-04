@@ -22,7 +22,7 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
     print("Testing...")
-    assert s.word_pattern("abba", "dog cat cat dog") == True
-    assert s.word_pattern("abba", "dog cat cat fish") == False
-    assert s.word_pattern("aaaa", "dog cat cat dog") == False
+    assert s.word_pattern("abba", "dog cat cat dog") is True
+    assert s.word_pattern("abba", "dog cat cat fish") is False
+    assert s.word_pattern("aaaa", "dog cat cat dog") is False
     print("Done!")

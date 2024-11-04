@@ -53,6 +53,6 @@ if __name__ == "__main__":
         ".e1",
     ]
     print("Testing...")
-    assert all(s.isNumber(n) for n in numbers) == True
-    assert all(not s.isNumber(c) for c in not_numbers) == True
+    assert all(s.isNumber(n) for n in numbers) is True
+    assert all(not s.isNumber(c) for c in not_numbers) is True
     print("Done!")

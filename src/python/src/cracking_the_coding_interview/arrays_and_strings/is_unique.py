@@ -5,10 +5,10 @@
 
 def is_unique(word: str) -> bool:
     uniqe_chars = set()
-    for l in word:
-        if l in uniqe_chars:
+    for letter in word:
+        if letter in uniqe_chars:
             return False
-        uniqe_chars.add(l)
+        uniqe_chars.add(letter)
     return True
 
 
@@ -21,15 +21,15 @@ def is_unique_without_additional_data_structures(word: str) -> bool:
 
 
 def is_unique_allowed_to_change_the_input(word: str) -> bool:
-    sorted = sorted(word)
-    for i in len(sorted) - 1:
-        if sorted[i] == sorted[i + 1]:
+    sorted_word = sorted(word)
+    for i in len(sorted_word) - 1:
+        if sorted_word[i] == sorted_word[i + 1]:
             return False
     return True
 
 
 if __name__ == "__main__":
     print("Testing...")
-    assert is_unique("awedcvbg") == True
-    assert is_unique("aakll") == False
+    assert is_unique("awedcvbg") is True
+    assert is_unique("aakll") is False
     print("Done!")

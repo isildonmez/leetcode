@@ -54,6 +54,6 @@ if __name__ == "__main__":
         [".", ".", ".", ".", "8", ".", ".", "7", "9"],
     ]
     print("Testing...")
-    assert s.is_valid_sudoku(b1) == True
-    assert s.is_valid_sudoku(b2) == False
+    assert s.is_valid_sudoku(b1) is True
+    assert s.is_valid_sudoku(b2) is False
     print("Done!")

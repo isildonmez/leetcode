@@ -2,7 +2,7 @@
 
 
 class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
+    def plusOne(self, digits: list[int]) -> list[int]:
         remainder = 1
         newDigits = digits.copy()
         for i in range(len(digits) - 1, -1, -1):

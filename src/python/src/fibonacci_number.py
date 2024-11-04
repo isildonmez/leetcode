@@ -8,6 +8,6 @@ class Solution:
         if n == 1:
             return 1
         left, right = 0, 1
-        for i in range(2, n + 1):
+        for _ in range(2, n + 1):
             left, right = right, left + right
         return right

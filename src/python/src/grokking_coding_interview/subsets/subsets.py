@@ -3,7 +3,7 @@ def find_all_subsets(nums):
     for i in range(1, 2 ** len(nums)):
         subset = []
         for j in range(len(nums)):
-            if include(i, j) == True:
+            if include(i, j) is True:
                 subset.append(nums[j])
         subsets.append(subset)
     return subsets

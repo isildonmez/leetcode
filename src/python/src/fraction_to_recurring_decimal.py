@@ -29,7 +29,7 @@ class Solution:
 
         return result
 
-    def fractionToDecimal(self, numerator: int, denominator: int) -> str:
+    def fractionToDecimalAlternative(self, numerator: int, denominator: int) -> str:
         sign = "-" if numerator * denominator < 0 else ""
         n, rem = divmod(abs(numerator), abs(denominator))
 

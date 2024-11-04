@@ -1,7 +1,6 @@
 [flake8]
 select = B,B9,BLK,C,E,F,I,S,W
 max-complexity = 10
-ignore = S101
-max-line-length = 88
+ignore = S101,W503,E501,B950
 application-import-names = src
 import-order-style = google

@@ -2,9 +2,9 @@
 
 
 class MyStack:
-    def __init__(self, l: list):
-        self.list = l
-        self.min_val = min(l)
+    def __init__(self, my_list: list):
+        self.list = my_list
+        self.min_val = min(my_list)
 
     def push(self, el: int) -> None:
         self.list.append(el)

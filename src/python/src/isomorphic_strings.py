@@ -33,12 +33,12 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
     print("Testing...")
-    assert s.isIsomorphic("egg", "add") == True
-    assert s.isIsomorphic("foo", "bar") == False
-    assert s.isIsomorphic("paper", "title") == True
-    assert s.isIsomorphic("bbbaaaba", "aaabbbba") == False
-    assert s.isIsomorphicSolution("egg", "add") == True
-    assert s.isIsomorphicSolution("foo", "bar") == False
-    assert s.isIsomorphicSolution("paper", "title") == True
-    assert s.isIsomorphicSolution("bbbaaaba", "aaabbbba") == False
+    assert s.isIsomorphic("egg", "add") is True
+    assert s.isIsomorphic("foo", "bar") is False
+    assert s.isIsomorphic("paper", "title") is True
+    assert s.isIsomorphic("bbbaaaba", "aaabbbba") is False
+    assert s.isIsomorphicSolution("egg", "add") is True
+    assert s.isIsomorphicSolution("foo", "bar") is False
+    assert s.isIsomorphicSolution("paper", "title") is True
+    assert s.isIsomorphicSolution("bbbaaaba", "aaabbbba") is False
     print("Done!")

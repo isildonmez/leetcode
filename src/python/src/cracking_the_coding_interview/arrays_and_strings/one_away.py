@@ -12,7 +12,7 @@ def one_away(left: str, right: str) -> bool:
     if len(left) == len(right):
         for i in range(len(left)):
             if left[i] != right[i]:
-                if editted == True:
+                if editted is True:
                     return False
                 editted = True
         return True
@@ -20,7 +20,7 @@ def one_away(left: str, right: str) -> bool:
     i = 0
     for j in range(len(shorter)):
         if shorter[i] != larger[j]:
-            if editted == True:
+            if editted is True:
                 return False
             editted = True
         else:
@@ -30,12 +30,12 @@ def one_away(left: str, right: str) -> bool:
 
 if __name__ == "__main__":
     print("Testing...")
-    assert one_away("pale", "ple") == True
-    assert one_away("ple", "pale") == True
-    assert one_away("pales", "pale") == True
-    assert one_away("pale", "pales") == True
-    assert one_away("pale", "bale") == True
-    assert one_away("bale", "pale") == True
-    assert one_away("pale", "bake") == False
-    assert one_away("bake", "pale") == False
+    assert one_away("pale", "ple") is True
+    assert one_away("ple", "pale") is True
+    assert one_away("pales", "pale") is True
+    assert one_away("pale", "pales") is True
+    assert one_away("pale", "bale") is True
+    assert one_away("bale", "pale") is True
+    assert one_away("pale", "bake") is False
+    assert one_away("bake", "pale") is False
     print("Done!")

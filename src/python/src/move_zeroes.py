@@ -12,7 +12,7 @@ class Solution(object):
             try:
                 nums.remove(0)
                 number_of_zeroes += 1
-            except ValueError as e:
+            except ValueError:
                 break
         nums += [0] * number_of_zeroes
         return nums

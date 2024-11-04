@@ -42,8 +42,8 @@ if __name__ == "__main__":
     d = TreeNode(1, TreeNode(2, TreeNode(3), None), None)
     s = Solution()
     print("Testing...")
-    assert s.is_same_tree(a, b) == False
-    assert s.is_same_tree(c, d) == True
-    assert s.is_same_solution(a, b) == False
-    assert s.is_same_solution(c, d) == True
+    assert s.is_same_tree(a, b) is False
+    assert s.is_same_tree(c, d) is True
+    assert s.is_same_solution(a, b) is False
+    assert s.is_same_solution(c, d) is True
     print("Done!")

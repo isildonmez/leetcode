@@ -41,7 +41,7 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
     print("Testing...")
-    assert s.isSubsequence("abc", "ahbgdc") == True
-    assert s.isSubsequence("axc", "ahbgdc") == False
-    assert s.isSubsequence("acb", "ahbgdc") == False
+    assert s.isSubsequence("abc", "ahbgdc") is True
+    assert s.isSubsequence("axc", "ahbgdc") is False
+    assert s.isSubsequence("acb", "ahbgdc") is False
     print("Done!")

@@ -28,7 +28,7 @@ class Solution:
 
         return max(linear_max, circular_max)
 
-    def maxSubarraySumCircular(self, nums: list[int]) -> int:
+    def maxSubarraySumCircularAlternative(self, nums: list[int]) -> int:
         linear_max = current_max = nums[0]
         linear_min = current_min = total_sum = nums[0]
         for i in range(1, len(nums)):
@@ -47,4 +47,7 @@ if __name__ == "__main__":
     assert s.maxSubarraySumCircular([1, -2, 3, -2]) == 3
     assert s.maxSubarraySumCircular([5, -3, 5]) == 10
     assert s.maxSubarraySumCircular([-3, -2, -3]) == -2
+    assert s.maxSubarraySumCircularAlternative([1, -2, 3, -2]) == 3
+    assert s.maxSubarraySumCircularAlternative([5, -3, 5]) == 10
+    assert s.maxSubarraySumCircularAlternative([-3, -2, -3]) == -2
     print("Done!")

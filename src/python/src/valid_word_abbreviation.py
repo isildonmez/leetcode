@@ -24,5 +24,5 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
     print("Testing...")
-    assert s.validWordAbbreviation("internationalization", "i5a11o1") == True
+    assert s.validWordAbbreviation("internationalization", "i5a11o1") is True
     print("Done!")

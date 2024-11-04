@@ -23,6 +23,6 @@ def magic_index(nums: list[int]) -> Optional[int]:
 if __name__ == "__main__":
     print("Testing...")
     assert magic_index([-9, -7, -5, 3]) == 3
-    assert magic_index([-9, -7, -5, 5, 6]) == None
+    assert magic_index([-9, -7, -5, 5, 6]) is None
     assert magic_index([-9, -7, -5, 3, 5]) == 3
     print("Done!")

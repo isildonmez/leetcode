@@ -51,7 +51,7 @@ if __name__ == "__main__":
     n1.random = n0
     output = s.copyRandomList(n0)
     assert output.val == 7  # n0
-    assert output.random == None
+    assert output.random is None
     assert output.next.val == 13  # n1
     assert output.next.random.val == 7
     assert output.next.next.val == 11  # n2
@@ -69,6 +69,6 @@ if __name__ == "__main__":
     assert output.val == 1
     assert output.next.val == 2
     assert output.random.val == 2
-    assert output.next.next == None
+    assert output.next.next is None
     assert output.random.random.val == 2
     print("Done!")

@@ -42,6 +42,6 @@ if __name__ == "__main__":
     n2.children = [n3]
     n4.children = [n5]
     n5.children = [n2]
-    assert route_between_nodes(n1, n3) == True
-    assert route_between_nodes(n1, n4) == False
+    assert route_between_nodes(n1, n3) is True
+    assert route_between_nodes(n1, n4) is False
     print("Done!")

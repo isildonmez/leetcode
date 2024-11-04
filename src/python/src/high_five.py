@@ -12,7 +12,7 @@ class Solution:
             sorted_ids[i] = [id, sum(scores_by_ids[id]) // 5]
         return sorted_ids
 
-    def highFive(self, items: list[list[int]]) -> list[list[int]]:
+    def highFiveAlternative(self, items: list[list[int]]) -> list[list[int]]:
         mapper = defaultdict(list)
         for sid, score in items:
             hq.heappush(mapper[sid], score)

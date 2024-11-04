@@ -18,14 +18,14 @@ if __name__ == "__main__":
     s = Solution()
     print("Testing...")
     s = Solution()
-    assert s.validPalindrome("aba") == True
-    assert s.validPalindrome("abca") == True
-    assert s.validPalindrome("abc") == False
-    assert s.validPalindrome("mlcupuufxoohdffdhooxfuupuculm") == True
+    assert s.validPalindrome("aba") is True
+    assert s.validPalindrome("abca") is True
+    assert s.validPalindrome("abc") is False
+    assert s.validPalindrome("mlcupuufxoohdffdhooxfuupuculm") is True
     assert (
         s.validPalindrome(
             "aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga"
         )
-        == True
+        is True
     )
     print("Done!")
