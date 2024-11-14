@@ -7,11 +7,9 @@ import heapq
 class Solution:
     def kClosest(self, points: list[list[int]], k: int) -> list[list[int]]:
         max_heap = []
-        for i, (x, y) in enumerate(points):
-            if len(max_heap) < k:
-                heapq.heappush(max_heap, (-(x**2 + y**2), i))
-                continue
-            if x**2 + y**2 < -max_heap[0][0]:
+        for x, y in points:
+            distance = x * x + y * y
+            heapq.heappush(max_heap, (-distance, x, y))
+            while len(max_heap) > k:
                 heapq.heappop(max_heap)
-                heapq.heappush(max_heap, (-(x**2 + y**2), i))
-        return [points[i] for distance, i in list(max_heap)]
+        return [[x, y] for _, x, y in max_heap]
