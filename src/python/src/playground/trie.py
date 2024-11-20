@@ -10,12 +10,9 @@ class Trie:
 
     def insert(self, word: str) -> None:
         current = self.root
-        for i, char in enumerate(word):
-            if char not in current.chars:
-                current.chars[char] = TrieNode()
-            current = current.chars[char]
-            if i == len(word) - 1:
-                current.is_word = True
+        for char in word:
+            current = current.chars.setdefault(char, TrieNode())
+        current.is_word = True
 
     def search(self, word: str) -> bool:
         current = self.root
