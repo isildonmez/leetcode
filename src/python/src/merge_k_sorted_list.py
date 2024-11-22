@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/merge-k-sorted-lists/description/?envType=company&envId=facebook&favoriteSlug=facebook-thirty-days
 
-import heapq
+from collections import defaultdict
 from typing import Optional
 
 
@@ -12,16 +12,15 @@ class ListNode:
 
 class Solution:
     def mergeKLists(self, lists: list[Optional[ListNode]]) -> Optional[ListNode]:
-        min_heap = []
-        for linked_list in lists:
-            head = linked_list
-            while head is not None:
-                heapq.heappush(min_heap, head.val)
-                head = head.next
+        vals_to_nodes = defaultdict(list)
+        for ll in lists:
+            while ll is not None:
+                vals_to_nodes[ll.val].append(ll)
+                ll = ll.next
         dummy_head = ListNode()
         current = dummy_head
-        while len(min_heap) > 0:
-            val = heapq.heappop(min_heap)
-            current.next = ListNode(val)
-            current = current.next
+        for val in sorted(vals_to_nodes.keys()):
+            for node in vals_to_nodes[val]:
+                current.next = node
+                current = current.next
         return dummy_head.next
