@@ -1,3 +1,6 @@
+# https://leetcode.com/problems/maximum-swap/?envType=problem-list-v2&envId=a6ezkna5
+
+
 import heapq
 
 
@@ -9,13 +12,17 @@ class Solution:
         for i, d in enumerate(digits):
             digits_to_latest_indices[d] = i
             heapq.heappush(max_heap, -d)
-        res = digits.copy()
+        pair_to_be_swapped = None
         for i, d in enumerate(digits):
             max_num = heapq.heappop(max_heap) * -1
             if d < max_num:
                 idx = digits_to_latest_indices[max_num]
-                res[i], res[idx] = max_num, d
-                return int("".join([str(d) for d in res]))
+                pair_to_be_swapped = (idx, i)
+                break
+        if pair_to_be_swapped is not None:
+            i1, i2 = pair_to_be_swapped
+            digits[i1], digits[i2] = digits[i2], digits[i1]
+            return int("".join([str(d) for d in digits]))
         return num
 
 
