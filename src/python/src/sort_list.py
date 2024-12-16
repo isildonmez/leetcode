@@ -7,56 +7,43 @@ class ListNode:
         self.next = next
 
 
+# This is Onlogn (time) and Ologn(space);
+# TODO: Check Editorial for O1(space)
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if head is None or head.next is None:
             return head
-
-        slow, fast = head, head.next
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
-
-        second_half = slow.next
-        slow.next = None
-
+        mid = self.get_mid(head)
         left = self.sortList(head)
-        right = self.sortList(second_half)
-
+        right = self.sortList(mid)
         return self.merge(left, right)
 
-    def merge(self, left: ListNode, right: ListNode) -> ListNode:
-        dummy = ListNode(0)
-        tail = dummy
-
-        while left and right:
-            if left.val < right.val:
-                tail.next = left
-                left = left.next
+    def merge(
+        self, list1: Optional[ListNode], list2: Optional[ListNode]
+    ) -> Optional[ListNode]:
+        dummy = ListNode()
+        current = dummy
+        while list1 is not None and list2 is not None:
+            if list1.val < list2.val:
+                current.next = list1
+                list1 = list1.next
             else:
-                tail.next = right
-                right = right.next
-            tail = tail.next
-
-        if left:
-            tail.next = left
-        if right:
-            tail.next = right
-
+                current.next = list2
+                list2 = list2.next
+            current = current.next
+        current.next = list1 if list2 is None else list2
         return dummy.next
 
-    def alternativeSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        temp = head
-        arr = []
-        while temp:
-            arr.append(temp.val)
-            temp = temp.next
-        temp = head
-        arr.sort()
-        for i in arr:
-            temp.val = i
-            temp = temp.next
-        return head
+    def get_mid(self, current: Optional[ListNode]) -> Optional[ListNode]:
+        if current is None:
+            return current
+        slow, fast = current, current.next
+        while fast.next is not None and fast.next.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        mid = slow.next
+        slow.next = None
+        return mid
 
 
 if __name__ == "__main__":
