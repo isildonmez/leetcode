@@ -3,23 +3,15 @@
 
 class Solution(object):
     def findMaxAverage(self, nums: list[int], k: int) -> float:
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: float
-        """
-        sub_sum = 0
-        for idx in range(k):
-            sub_sum += nums[idx]
-        if len(nums) == k:
-            return sub_sum / k
-        highest_sum = sub_sum
-        for starting_idx in range(1, len(nums) - k + 1):
-            sub_sum -= nums[starting_idx - 1]
-            sub_sum += nums[starting_idx + k - 1]
-            if sub_sum > highest_sum:
-                highest_sum = sub_sum
-        return highest_sum / k
+        left, right = 0, k - 1
+        current_sum = sum(nums[:k])
+        max_sum = current_sum
+        while right < len(nums) - 1:
+            current_sum = current_sum - nums[left] + nums[right + 1]
+            max_sum = max(max_sum, current_sum)
+            right += 1
+            left += 1
+        return float(max_sum / k)
 
 
 if __name__ == "__main__":
