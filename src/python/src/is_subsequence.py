@@ -3,39 +3,14 @@
 
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        i, j = 0, 0
-        while i < len(s):
-            found_char = False
-            while j < len(t):
-                if s[i] == t[j]:
-                    j += 1
-                    found_char = True
-                    break
-                else:
-                    j += 1
-            if not found_char:
-                return False
-            i += 1
-        return True
-
-    def alternative_is_subsequence(self, s: str, t: str) -> bool:
-        t_length = len(t)
-        s_length = len(s)
-
-        if t_length < s_length:
-            return False
-
-        i, j, count = 0, 0, 0
-
-        while i < s_length and j < t_length:
+        i = j = 0
+        while i < len(s) and j < len(t):
             if s[i] == t[j]:
-                i = i + 1
-                j = j + 1
-                count = count + 1
-            else:
-                j = j + 1
-
-        return count == s_length
+                i += 1
+            j += 1
+        if i == len(s):
+            return True
+        return False
 
 
 if __name__ == "__main__":
