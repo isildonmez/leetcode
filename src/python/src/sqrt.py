@@ -5,16 +5,17 @@ class Solution:
     def mySqrt(self, x: int) -> int:
         if x == 0 or x == 1:
             return x
-        higher, lower = x, 0
-        while higher > lower + 1:
-            divider = (higher + lower) // 2
+        left, right = 1, x // 2
+        while left <= right:
+            divider = (left + right) // 2
             if divider**2 == x:
                 return divider
-            elif divider**2 > x:
-                higher = divider
+            if divider**2 > x:
+                right = divider - 1
             else:
-                lower = divider
-        return lower
+                left = divider + 1
+        return right
+
 
 
 if __name__ == "__main__":
