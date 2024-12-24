@@ -1,7 +1,5 @@
 # https://leetcode.com/problems/climbing-stairs/?envType=study-plan-v2&envId=top-interview-150
 
-import math
-
 
 class Solution:
     def climbStairs(self, n: int) -> int:

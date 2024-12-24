@@ -1,10 +1,8 @@
 class UnionFind:
     def __init__(self, n: int) -> None:
-        self.parent = []
+        self.parent = [i for i in range(n + 1)]
         self.rank = [1] * (n + 1)
-        for i in range(n+1):
-            self.parent.append(i)
-    
+
     def find_parent(self, v: int) -> int:
         if self.parent[v] != v:
             self.parent[v] = self.find_parent(self.parent[v])

@@ -17,7 +17,6 @@ class Solution:
         return right
 
 
-
 if __name__ == "__main__":
     s = Solution()
     print("Testing...")
