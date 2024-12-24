@@ -3,14 +3,12 @@
 
 class Solution:
     def plusOne(self, digits: list[int]) -> list[int]:
-        remainder = 1
-        newDigits = digits.copy()
-        for i in range(len(digits) - 1, -1, -1):
-            total = newDigits[i] + remainder
-            remainder = total // 10
-            newDigits[i] = total % 10
-            if remainder == 0:
-                return newDigits
-        if remainder != 0:
-            return [remainder] + newDigits
-        return newDigits
+        i = len(digits) - 1
+        while i >= 0:
+            if digits[i] < 9:
+                digits[i] += 1
+                return digits
+            digits[i] = 0
+            if i == 0:
+                return [1] + digits
+            i -= 1
